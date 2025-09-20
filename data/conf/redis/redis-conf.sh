@@ -1,5 +1,8 @@
 #!/bin/sh
 
+REDISPASS=$(cat /run/secrets/redis_pass)
+REDISMASTERPASS=$(cat  /run/secrets/redis_master_pass)
+
 cat <<EOF > /redis.conf
 requirepass $REDISPASS
 user quota_notify on nopass ~QW_* -@all +get +hget +ping
